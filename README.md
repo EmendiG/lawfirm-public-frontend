@@ -11,3 +11,4 @@ Secure web application frontend created with an usage of TypeScript Angular Fram
   || Cloud Run <br/>
   || App Engine <br/>
 * Connected with Spring Backend through REST API
+* Lighthouse optimized
