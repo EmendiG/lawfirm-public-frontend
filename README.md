@@ -7,8 +7,8 @@ Secure web application frontend created with an usage of TypeScript Angular Fram
 * Firebase Hosting <br/>
 * Firebase Storage <br/>
 * Firebase Authentication <br/>
-* Firebase Function <br/>
-  || Cloud Run <br/>
-  || App Engine <br/>
+* Firebase Cloud Function <br/>
+  || Google Cloud Run <br/>
+  || Google App Engine <br/>
 * Connected with Spring Backend through REST API
 * Lighthouse optimized
