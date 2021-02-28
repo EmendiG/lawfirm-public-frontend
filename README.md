@@ -1,10 +1,11 @@
-## Kancelaria-Frontend
+## Frontend for lawfirm webpage
+Secure web application frontend created with an usage of TypeScripy Angular Framework and: 
 
-> Angular
-> Angular Universal SSR
-> CKEditor 5
-> Firebase Hosting
-> Firebase Authentication
-> Firebase Function
-  || Cloud Run
-  || App Engine
+* Angular Universal SSR <br/>
+* CKEditor 5 WYSIWYG <br/>
+* Firebase Hosting <br/>
+* Firebase Storage <br/>
+* Firebase Authentication <br/>
+* Firebase Function <br/>
+  || Cloud Run <br/>
+  || App Engine <br/>
