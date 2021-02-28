@@ -1,0 +1,182 @@
+<div class="container pb-5" >
+
+  <div class="row pt-sm-5" >
+    <div class="col-sm-10 offset-sm-1 d-none d-sm-block" >
+      <div class="article-max-width" >
+        <a (click)="navigateBack()" style="color: var(--gold); cursor: pointer; font-weight: 600; ">
+          < Back to list
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row pt-sm-5 pt-3" >
+    <div class="col-lg-10 offset-lg-1" >
+      <div class="article-max-width"  style="background-color: var(--white); padding: 20px; border-radius: 3px;"  >
+
+        <div style="position: relative; ">
+          <p style="margin-bottom: 0.2rem; font-family: 'Poppins';">
+            Published: {{ blogArticlePostTime }}
+          </p>
+          <h1 class="title title-border">
+            {{ blogArticle.title }}
+          </h1>
+        </div>
+        <div style="padding-bottom: 20px; padding-top: 20px; width: max-content">
+          <div class="mr-auto post-category" >
+            <p class="text-left" >
+              {{ BlogCategoryEnum[blogArticle.category] }}
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="blog-img"
+          [ngStyle]="{ 'background-image': 'url(' + blogArticle.pictureUrl + ')' }">
+          <div style="background-color: var(--black); position: absolute; bottom: 0px; width: 100%; height: 36px; opacity: 0.8; display: flex; align-items: center;  border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+            <p class="my-auto" style="margin-left: 20px; color: var(--white);">{{ blogArticle.pictureDescription }}</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-1">
+            <div class="row ml-auto float-lg-right d-flex justify-content-center pb-3" >
+              <share-buttons
+                [theme]="'circles-dark'"
+                [include]="['facebook', 'messenger', 'twitter', 'linkedin', 'copy', 'email']"
+                [show]="6"
+                class="ng-share-button-vertical"
+                [autoSetMeta]="false"
+              ></share-buttons>
+            </div>
+          </div>
+          <div class="col-lg-11">
+            <div [innerHTML]="blogArticle.content | safeHtml"></div>
+          </div>
+        </div>
+
+        <div class="row signing-row" >
+          <div class="col-lg-5 p-lg-4 p-3 signing-row-flex" >
+            <div class="d-flex justify-content-lg-left justify-content-center">
+              <img height="60px" width="60px" style="border-radius: 50%; margin-left: 10px;" alt="XXX XXXXX" src="/assets/images/pic-comment.jpg">
+              <p style="margin: auto; margin-left: 10px; margin-right:0; ">XXX. {{blogArticle.author}}</p>
+            </div>
+          </div>
+          <div class="col-lg-7 py-lg-4">
+            <p class="like-social-signature" >Did you like the article? Share it on social media:</p>
+            <div class="row ml-auto float-lg-right d-flex justify-content-lg-right justify-content-center" style="margin-right: 0px;" >
+              <share-buttons
+                [theme]="'circles-dark'"
+                [include]="['facebook', 'messenger', 'twitter', 'linkedin', 'copy', 'email']"
+                [show]="6"
+                [showText]="true"
+                class="ng-share-button-horizontal"
+
+                [url]="currentUrl"
+                [title]="this.blogArticle.title"
+                [description]="this.blogArticle.description"
+                [image]="this.blogArticle.pictureUrl"
+                [tags]="this.blogArticle.tags"
+
+                [autoSetMeta]="false"
+              ></share-buttons>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row pt-lg-4 pt-3 pb-5" >
+    <div class="col-lg-10 offset-lg-1" >
+      <div class="article-max-width" style="background-color: var(--white); padding: 20px; border-radius: 3px;" >
+
+
+        <div style="background-color: var(--white); padding: 10px;">
+          <h2 style="margin-bottom: 30px;">Comments ({{blogComments.length}}):</h2>
+          <div *ngFor="let comment of blogComments; let i = index " >
+
+            <div style="margin-top: 20px" *ngIf="comment.parentId === comment.id  && comment.parentId == comment.mainParentId" >
+              <hr style="height: 3px; opacity: 0.2; background-color: var(--grey)" *ngIf="i > 0" >
+              <div class="mx-2">
+                <div class="d-flex justify-content-left" style="margin-bottom: 10px;">
+                  <img height="35px" width="35px" style="border-radius: 50%; margin-right:5px;" src="/assets/images/gosia-comment.jpg" *ngIf="comment.author === 'XXX. XXXXXX XXXX' ">
+                  <p style="margin: auto; margin-left: 0; margin-right:0; font-weight: 600; font-family: 'Poppins';">{{comment.author}}</p>
+                  <p style="margin: auto; margin-left: 20px; font-family: 'Poppins';">{{comment.commentTime}}</p>
+                  <div  *ngIf="adminUser">
+                    <button
+                      (click)="onCommentDelete(comment.id)"
+                      class="btn btn-submit btn-danger ml-auto mr-1 float-right"
+                      type="button">
+                      Usun
+                    </button>
+                  </div>
+                </div>
+                <p>{{comment.content}}</p>
+                <p (click)="openAnswerComponent(comment.id)" style="font-family: 'Poppins-Bold'; font-weight: bolder; cursor: pointer; color: var(--gold);">Odpowiedz</p>
+              </div>
+            </div>
+
+            <div
+              style="margin-left: 12px; padding-left: 15px; border-left: 4px solid var(--grey); padding-top: 10px; padding-bottom:0"
+              *ngIf="comment.parentId !== comment.id  && comment.parentId === comment.mainParentId ">
+              <div class="mx-2">
+                <div class="d-flex justify-content-left" style="margin-bottom: 10px;">
+                  <img height="35px" width="35px" style="border-radius: 50%; margin-right:5px;" alt="XXXXXX XXXXX" src="/assets/images/gosia-comment.jpg" *ngIf="comment.author === 'XXX. XXXXXX XXXX' ">
+                  <p style="margin: auto; margin-left: 0; margin-right:0; font-weight: 600; font-family: 'Poppins';">{{comment.author}}</p>
+                  <p style="margin: auto; margin-left: 20px; font-family: 'Poppins';">{{comment.commentTime}}</p>
+                  <div  *ngIf="adminUser">
+                    <button
+                      (click)="onCommentDelete(comment.id)"
+                      class="btn btn-submit btn-danger ml-auto mr-1 float-right"
+                      type="button">
+                      Usuń
+                    </button>
+                  </div>
+                </div>
+                <p style="margin-bottom: 0 !important;">{{comment.content}}</p>
+              </div>
+            </div>
+            <div class="mt-4" *ngIf="commentAnswerShow && comment.id == returnId"></div>
+            <app-blog-comment
+              (commentSubmitted)="commentSubmitted($event)"
+              [mainParentId]="comment.mainParentId"
+              [parentId]="comment.mainParentId"
+              [commentId]="comment.mainParentId"
+              class="answer-comment"
+              *ngIf="commentAnswerShow && comment.id == returnId"
+            ></app-blog-comment>
+          </div>
+        </div>
+
+        <hr style="height: 3px; opacity: 0.2; background-color: var(--grey)">
+
+        <div class="row">
+          <div class="col-lg-8">
+            <app-blog-comment (commentSubmitted)="commentSubmitted($event)" ></app-blog-comment>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div  *ngIf="adminUser">
+      <button
+        (click)="onEdit()"
+        class="btn btn-submit btn-success ml-auto mr-1 float-right"
+        type="button">
+        Edit
+      </button>
+    </div>
+  </div>
+
+  <div class="row pt-lg-3" >
+    <div class="col-lg-10 offset-lg-1" >
+      <div style="max-width: 920px;" >
+        <app-blog-list [currentPostId]="blogArticle.id" [postCategory]=blogArticle.category></app-blog-list>
+      </div>
+    </div>
+  </div>
+
+</div>

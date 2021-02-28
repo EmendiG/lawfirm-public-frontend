@@ -1,0 +1,211 @@
+<div class="container-fluid loading-spinner" style="background-color: var(--blue); height: 100%; min-height: calc( 100vh - 111px ) ;">
+
+  <div class="row">
+    <app-alert
+      [message]="error"
+      [strongMessage]="strongError"
+      *ngIf="error"
+      (close)="onHandleError()"
+    ></app-alert>
+
+
+    <div class="col-lg-6 col-12 offset-lg-2" >
+      <div class="row">
+        <div class="col-12">
+
+          <div class="col-lg-9 px-0 mb-lg-5">
+            <div class="about-div" style="margin-top: 12vh; margin-bottom: 5px; width: 100%">
+              <div class="left-divider d-block d-lg-none"></div>
+              <h2 class="about-h2" style="color: var(--white);">XXXXXXXXXXXXX X XXXX</h2>
+              <div class="right-divider"></div>
+            </div>
+            <p class="text-lg-left text-center" style="color: var(--white); font-family: 'Poppins-Light';margin-top: 0px;">
+              XXXXXXXXXXXXX XXXXXXXXXXXX XXXXXXXXXXXXX XXX
+            </p>
+          </div>
+
+          <div class="row pt-2">
+
+            <div *ngIf="isLoading" class="col-12 px-0 mx-0" style="position: relative; height: 350px">
+              <div   style="position: absolute; top: 30%; left: 40%" >
+                <app-loading-spinner></app-loading-spinner>
+              </div>
+            </div>
+
+            <div class="col-12" *ngIf="!isLoading" >
+              <form
+                [ngStyle]="
+                  activeTab === 'form'
+                    ? { visibility: 'visible', display: 'inline' }
+                    : { visibility: 'hidden', display: 'none' }
+                "
+                (ngSubmit)="onSubmit()"
+                #contactForm="ngForm"
+              >
+                <div class="form-row">
+                  <div class="col-lg-4 m-lg-0 m-2">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="fullName"
+                      ngModel
+                      required
+                      name="fullName"
+                      label
+                      #fullName="ngModel"
+                    />
+                    <label for="fullName" class="ngform-label">
+                      Name
+                    </label>
+                  </div>
+                  <div class="col-lg-4 m-lg-0 m-2">
+                    <input
+                      type="tel"
+                      class="form-control"
+                      id="phoneNumber"
+                      ngModel
+                      required
+                      pattern="^\d{2}(?: ?\d+)*$"
+                      name="phoneNumber"
+                      #phoneNumber="ngModel"
+                    />
+                    <label for="phoneNumber" class="ngform-label">
+                      Phone number
+                    </label>
+                  </div>
+                  <div class="col-lg-4 m-lg-0 m-2">
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      ngModel
+                      name="email"
+                      email
+                      #email="ngModel"
+                    />
+                    <label for="email" class="ngform-label">
+                      Email
+                    </label>
+                  </div>
+                </div>
+                <div class="form-row mt-3">
+                  <div class="col-lg-12 m-lg-0 m-2">
+                    <textarea
+                      class="form-control"
+                      rows="7"
+                      id="caseDescription"
+                      name="caseDescription"
+                      ngModel
+                    ></textarea>
+                    <label for="caseDescription" class="ngform-label">
+                      Describe case
+                    </label>
+                  </div>
+
+                </div>
+                <div
+                  class="validation-message"
+                  *ngIf="!fullName.dirty && formSubError"
+                >
+                  Please, enter firstname and surname
+                </div>
+                <div
+                  class="validation-message"
+                  *ngIf="!phoneNumber.valid && formSubError"
+                >
+                  Please, enter proper phone number
+                </div>
+                <div
+                  class="validation-message"
+                  *ngIf="!email.valid && formSubError"
+                >
+                  Please, enter proper email address
+                </div>
+                <div
+                  class="validation-message"
+                  *ngIf="!checkbox.valid && formSubError"
+                >
+                  Consent is required
+                </div>
+
+                <div class="row mt-3">
+                  <div class="form-row col-lg-9 d-flex justify-content-between ">
+                    <div class="m-lg-1 m-2">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="defaultCheck"
+                          required
+                          name="checkbox"
+                          #checkbox="ngModel"
+                          ngModel
+                          value=""
+                        />
+                        <label
+                          class="form-check-label"
+                          style="color: var(--white)"
+                          for="defaultCheck">
+                          I declare that I am familiar with
+                          <a
+                            style="color: var(--gold)"
+                            href="/privacy"
+                            [routerLink]="['/privacy']" >Privacy Policy</a>
+                            and I accept its provisions.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    class="col-lg-3 col-8 offset-2 offset-lg-0 mt-4 mt-md-0 btn btn-submit btn-success"
+                    type="submit"
+                    style="color: var(--white); text-align: center;  display: inline-block; "
+                    >
+                    Make an appointment
+                  </button>
+                </div>
+
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-lg-8 offset-lg-2 px-1 padding-contact">
+    <ul class="navbar-nav flex-md-row justify-content-center justify-content-md-between " >
+      <li class="nav-item" >
+        <a href="/#lawfirm" class="nav-link" [routerLink]="['/']" fragment="lawfirm">Lawfirm</a>
+      </li>
+      <li class="nav-item" >
+        <a href="/#services" class="nav-link" [routerLink]="['/']" fragment="services">Services</a>
+      </li>
+      <li class="nav-item" >
+        <a href="/#opinions" class="nav-link" [routerLink]="['/']" fragment="opinions">Opinions</a>
+      </li>
+      <li class="nav-item" >
+        <a href="/#contact" class="nav-link"  [routerLink]="['/']" fragment="contact"  >Contact</a>
+      </li>
+      <li class=" d-none d-lg-block nav-item">
+        <div class="nav-link">
+          <div class="v1" style="background-color: var(--white)"> </div>
+        </div>
+      </li>
+      <li class="nav-item" >
+        <a  href="/blog" class="nav-link" [routerLink]="['/blog']"  [queryParams]="{page: '1'}" >Blog</a>
+      </li>
+      <li class="nav-item" >
+        <a  href="/about" class="nav-link" [routerLink]="['/about']" >About&nbsp;me</a>
+      </li>
+
+      <li class="nav-item p-item ml-auto" >
+        <p class="nav-link p-link" >XXXXXXX XXXXXXX XXXXX XXXXXX 2021 &#174; </p>
+      </li>
+    </ul>
+  </div>
+
+</div>

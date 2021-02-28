@@ -1,0 +1,50 @@
+<div >
+  <p style="font-weight: 600;">
+    Add your comment
+  </p>
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="commentForm"  >
+    <div class="form-row">
+
+      <div class="col-lg-12 m-lg-0 m-2">
+        <textarea
+          [ngClass]="{'input-error': commentForm.controls.content.touched && commentForm.controls.content.invalid}"
+          class="form-control my-2"
+          rows="4"
+          id="content"
+          minlength="3"
+          maxlength="500"
+          formControlName="content"
+        >
+        </textarea>
+        <label class="ngform-label">
+          Comments
+        </label>
+      </div>
+
+      <div class="col-lg-8 m-lg-0 m-2">
+        <input
+          [ngClass]="{'input-error': commentForm.controls.author.touched && commentForm.controls.author.invalid}"
+          type="text"
+          class="form-control my-2"
+          id="author"
+          minlength="3"
+          maxlength="90"
+          formControlName="author"
+        >
+        <label class="ngform-label">
+          Alias
+        </label>
+      </div>
+      <div class="col-4" style="display: flex; align-items: center;">
+        <button
+          class="btn btn-submit btn-success ml-auto mr-1 float-right"
+          type="submit"
+          style="color: var(--white); text-align: center;  display: inline-block;"
+        >Comment</button>
+      </div>
+
+
+    </div>
+  </form>
+</div>

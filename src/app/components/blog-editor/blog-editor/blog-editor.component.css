@@ -1,0 +1,374 @@
+.count-div {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  height: 34px;
+  width: 40px;
+  border: 1px solid var(--grey);
+  border-radius: 4px;
+  background-color: var(--white);
+  color: var(--black);
+  font-size: 14px;
+}
+
+.count-text {
+  margin-top:5px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.answer-comment ::ng-deep .form-control {
+  background: var(--white);
+}
+.answer-comment ::ng-deep .ngform-label {
+  background: var(--white);
+}
+
+::ng-deep .sb-circles-dark .sb-wrapper .sb-icon {
+  width: 36px;
+  height: 36px;
+  box-shadow: none;
+}
+
+::ng-deep .ng-share-button-vertical .sb-circles-dark .sb-wrapper .sb-icon {
+  width: 36px;
+  height: 36px;
+  box-shadow: none;
+  border: 1px solid var(--grey);
+}
+
+::ng-deep .ng-share-button-vertical .sb-circles-dark .sb-wrapper .sb-icon {
+  --button-color: var(--border-grey);
+  background-color: var(--white) !important;
+}
+
+::ng-deep .ng-share-button-vertical .sb-content .ng-star-inserted {
+  color: var(--border-grey);
+}
+
+::ng-deep .ng-share-button-vertical share-button:hover  .sb-content .ng-star-inserted {
+  color: var(--gold) !important;
+}
+
+
+::ng-deep  .sb-email > div {
+  --button-color: #000065;
+}
+
+
+.title {
+  overflow: hidden;
+  padding-top:10px;
+  line-height: 56px;
+}
+
+.title:after {
+  content: '';
+  display: inline-block;
+  vertical-align: bottom;
+  height: 2px;
+  box-shadow: -100vw 100vw  0 100vw var(--gold);
+}
+
+.post-category {
+  background-color: var(--light-grey);
+  border-radius: 6px;
+  padding: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0;
+  height: 1.8rem;
+}
+
+::ng-deep .ng-share-button-horizontal .sb-circles-dark .sb-wrapper .sb-content {
+  width: 40px;
+  border-radius: 18px;
+  background-color: var(--light-grey);
+}
+::ng-deep .ng-share-button-horizontal .sb-circles-dark .sb-wrapper:hover .sb-content {
+  flex-direction: row;
+  background-color:var(--white);
+  border-radius: 18px;
+  transition: all 0.4s ease-in-out;
+  width: auto;
+}
+
+::ng-deep .ng-share-button-horizontal .sb-circles-dark .sb-wrapper .sb-text {
+  visibility: hidden;
+  display: none;
+  transition: all 0.3s ease-in-out;
+  transition: visibility 0.0s ease-in-out;
+}
+::ng-deep .ng-share-button-horizontal .sb-circles-dark .sb-wrapper:hover .sb-text {
+  visibility: visible;
+  display: flex;
+  padding-top: 12px;
+  padding-bottom: 16px;
+  padding-right: 12px;
+  padding-left: 0px;
+  position: relative;
+  left: 6px;
+  transition: all 0.3s ease-in-out;
+}
+
+
+::ng-deep li::marker {
+  color: var(--gold) !important
+}
+
+.article-max-width {
+  max-width: 920px;
+  padding-left: 60px !important;
+  padding-right: 60px !important;
+}
+
+.blog-img {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background-position: center;
+  background-size: 100% 100%;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+
+.signing-row {
+  background-color: var(--light-grey);
+  border-radius: 12px;
+}
+.signing-row-flex {
+  display: flex;
+  align-items: center;
+}
+
+.like-social-signature {
+  text-align: right;
+  font-weight: 600
+}
+
+@media (max-width:992px) {
+
+  .article-max-width {
+    max-width: 920px;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  .blog-img {
+    height: 200px;
+    margin-bottom: 20px;
+  }
+
+  .signing-row {
+    margin: 0px;
+  }
+
+  .like-social-signature {
+    text-align: center;
+  }
+
+  .signing-row-flex {
+    display: inline;
+
+  }
+
+  ::ng-deep .ng-share-button-horizontal .sb-circles-dark .sb-wrapper .sb-content {
+    width: 34px;
+    margin: 0;
+  }
+
+}
+
+
+
+
+.ngb-carousel {
+  margin: 5vh auto 10vh;
+}
+
+.ngb-carousel img {
+  width: 100%;
+  outline: none;
+}
+
+.ngb-carousel {
+  width: inherit;
+  height: inherit;
+}
+
+.carousel-inner {
+  overflow: visible;
+}
+
+
+.carousel-ng-image > img {
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.carousel-ng-image {
+  height: 32vh;
+  min-height: 300px;
+  width: 100%;
+  z-index: 22;
+}
+
+.carousel-immovable-element {
+  height: 47vh;
+  min-height: calc( 300px + 15vh );
+}
+.carousel-immovable-element .ngb-carousel {
+  background-color: var(--white);
+  border-radius: 8px;
+  height: 32vh;
+  min-height: 300px;
+}
+
+
+.post-category {
+  background-color: var(--light-grey);
+  border-radius: 6px;
+  padding: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0;
+  height: 1.8rem;
+}
+
+
+
+.category-time {
+  position: absolute;
+  top:200px;
+  width: 98%
+}
+
+
+.body-post {
+  height: 16rem;
+  min-height: 200px;
+  padding-top:10px
+}
+
+
+
+.liscie-blog {
+  width: 90%;
+  height: auto;
+}
+
+
+@media (max-width:1199px) {
+  .mobile-title {
+    font-size: 18px !important;
+  }
+
+  .mobile-description {
+    font-size: 12px !important;
+    min-height: max-content;
+  }
+
+  .body-post {
+    min-height: 260px;
+  }
+
+  .liscie-blog {
+    width: 140%;
+    position: relative;
+    top: 50%;
+    transform: translateY(20%);
+  }
+}
+
+@media (max-width:992px) {
+
+  .mobile-title {
+    font-size: 1.25rem !important;
+  }
+
+  .mobile-description {
+    font-size: 14px !important;
+  }
+
+  .carousel-ng-image {
+    height: 240px;
+    min-height: 28vh;
+    z-index: 2;
+  }
+  .carousel-ng-image > img {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .carousel-immovable-element {
+    height: 280px;
+    min-height: calc( 28vh + 15vh );
+    margin-bottom: 40px;
+  }
+  .carousel-immovable-element ngb-carousel {
+    height: 240px;
+    min-height: 28vh;
+  }
+
+
+  .carousel-mobile-title {
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    background-color: var(--white);
+    opacity: 1;
+    min-height: 3rem;
+    width: 100%;
+    z-index: 22;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  .carousel-ng-title {
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 4px;
+    z-index: 23;
+    text-align: center;
+    min-height: 3rem;
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* line-height: 3rem; */
+  }
+
+  ::ng-deep .carousel-control-next {
+    opacity: 0;
+    height: 100%;
+  }
+  ::ng-deep .carousel-control-prev {
+    opacity: 0;
+    height: 100%;
+  }
+
+  ngb-pagination ::ng-deep ul > li:not(.active) > a {
+    margin-left: 1px;
+    margin-right: 1px;
+    width: 32px;
+  }
+
+  ngb-pagination ::ng-deep ul > li.active > a {
+    width: 36px;
+  }
+
+}
+
+@media (max-width:480px) {
+  .carousel-immovable-element {
+    margin-bottom: 0;
+  }
+}

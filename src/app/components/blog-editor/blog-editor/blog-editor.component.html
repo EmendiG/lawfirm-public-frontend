@@ -1,0 +1,269 @@
+<div class="container-fluid">
+  <div class="row pt-sm-5 pt-3" >
+    <div class="col-lg-10 offset-lg-1" >
+      <form (ngSubmit)="onSubmit()" [formGroup]="blogPostForm">
+        <input
+          type="text"
+          class="form-control my-4"
+          id="title"
+          maxlength="90"
+          formControlName="title"
+          placeholder="Post title * (up to 90 characters) "
+        />
+
+        <select
+          class="form-control my-4"
+          formControlName="category"
+          id="category"
+        >
+        <!-- at the same time update blog cattegory enum in models -->
+          <option value="przedsiebiorca">XXXXXXX</option>
+          <option value="nowe_technologie">XXXXX XXXXXX</option>
+          <option value="nieruchomosci">XXXXXXX</option>
+        </select>
+
+        <input
+          type="file"
+          id="pictureUpload"
+          (change)="fileUpload($event)"
+          class="form-control my-4"
+        />
+
+        <img
+          src="{{ pictureView }}"
+          class="my-4"
+          *ngIf="pictureView"
+          style="width: 100%; height: 30vh;"
+          [ngStyle]="{'object-fit': pictureSize }" />
+
+        <div class="col-12 d-flex justify-content-center" *ngIf="isLoading">
+          <app-loading-spinner style="text-align: center"></app-loading-spinner>
+        </div>
+
+        <input
+          type="text"
+          id="pictureDescription"
+          formControlName="pictureDescription"
+          maxlength="200"
+          placeholder="Photo caption (up to 200 characters)"
+          class="form-control my-4"
+        />
+
+        <div style="position: relative">
+          <textarea
+            #description
+            class="form-control my-4"
+            rows="4"
+            id="description"
+            formControlName="description"
+            placeholder="Short description (up to 2500 characters)"
+            maxlength="250"
+          >
+          </textarea>
+
+          <div class="count-div">
+            <div *ngIf="description" class="count-text">
+              {{ description.value.length }}
+            </div>
+          </div>
+        </div>
+
+        <ckeditor
+          style="overflow: hidden;   overflow-wrap: break-word;"
+          #editorCK
+          id="content"
+          formControlName="content"
+          [editor]="editor"
+          [config]="ckeConfig"
+          (ready)="onReady($event)"
+        ></ckeditor>
+
+        <textarea
+          class="form-control my-4"
+          rows="3"
+          id="tags"
+          formControlName="tags"
+          placeholder="Tags (up to 200 characters)"
+          maxlength="200"
+        >
+        </textarea>
+        <input
+          type="text"
+          class="form-control my-4"
+          id="author"
+          formControlName="author"
+          placeholder="Autor *"
+        >
+
+        <div *ngIf="formInvalid">
+          <p style="color: red;">Post is incompatible with the format</p>
+        </div>
+
+        <div>
+          <button type="button" style="color: var(--white);" class="btn btn-primary mt-3  float-left"                     (click)="onCheck()" >Check  </button>
+          <button type="button" style="color: var(--white);" class="btn btn-secondary mx-3 mt-3  float-left"              (click)="onReset()" >Reset  </button>
+          <button type="submit" style="color: var(--white);" class="btn btn-success mt-3 float-right"     *ngIf="!blogId"                     >Send   </button>
+          <button type="button" style="color: var(--white);" class="btn btn-warning mt-3 float-right"     *ngIf="blogId"  (click)="onUpdate()">Update </button>
+          <button type="button" style="color: var(--white);" class="btn btn-danger mt-3 mr-4 float-right" *ngIf="blogId"  (click)="onDelete()">Delete </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+<div class="container  pb-5">
+  <div class="row pt-sm-5 pt-3" >
+    <div class="col-lg-10 offset-lg-1" >
+      <div class="article-max-width"  style="background-color: var(--white); padding: 20px; border-radius: 3px;"  >
+
+        <div style="position: relative; ">
+          <p style="margin-bottom: 0.2rem; font-family: 'Poppins';">
+            Published:
+          </p>
+          <h1 class="title title-border">
+            {{ blogPostForm.get('title').value }}
+          </h1>
+        </div>
+        <div style="padding-bottom: 20px; padding-top: 20px; width: max-content">
+          <div class="mr-auto post-category" >
+            <p class="text-left" >
+              {{ blogPostForm.get('category').value }}
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="blog-img"
+          [ngStyle]="{ 'background-image': 'url(' + pictureView + ')' }">
+          <div style="background-color: var(--black); position: absolute; bottom: 0px; width: 100%; height: 36px; opacity: 0.8; display: flex; align-items: center;  border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+            <p class="my-auto" style="margin-left: 20px; color: var(--white);">{{ blogPostForm.get('pictureDescription').value }}</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-1">
+            <div class="row ml-auto float-lg-right d-flex justify-content-center pb-3" >
+            </div>
+          </div>
+          <div class="col-lg-11">
+            <div [innerHTML]="textarea | safeHtml"></div>
+          </div>
+        </div>
+
+        <div class="row signing-row" >
+          <div class="col-lg-5 p-lg-4 p-3 signing-row-flex" >
+            <div class="d-flex justify-content-lg-left justify-content-center">
+              <img height="60px" width="60px" style="border-radius: 50%; margin-left: 10px;" alt="XXXXX XXXX" src="/assets/images/pic-comment.jpg">
+              <p style="margin: auto; margin-left: 10px; margin-right:0; ">XXX. {{ blogPostForm.get('author').value }}</p>
+            </div>
+          </div>
+          <div class="col-lg-7 py-lg-4">
+            <p class="like-social-signature" >Did you like the article? Share it on social media:</p>
+            <div class="row ml-auto float-lg-right d-flex justify-content-lg-right justify-content-center" style="margin-right: 0px;" >
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class=" col-12">
+      <div class="row">
+        <div class="col-lg-12 col-xl-10 offset-xl-1 carousel-immovable-element">
+            <div class="ngb-carousel">
+              <div class="row"  >
+                <div class="col-md-6 carousel-ng-image" >
+                  <img
+                    src="{{ pictureView }}"
+                  >
+                </div>
+                <div class="d-block d-md-none carousel-mobile-title">
+                  <h5 class="carousel-ng-title">
+                    {{ blogPostForm.get('title').value }}
+                  </h5>
+                </div>
+                <div class="d-none d-md-block col-md-6">
+                  <div class="row mt-4 mr-md-4 mr-2 ml-md-1">
+                    <div class="col-12">
+                      <div class="row">
+                        <h5 class="carousel-ng-title" style="cursor: pointer; z-index: 22"   >
+                          {{ blogPostForm.get('title').value }}
+                        </h5>
+                      </div>
+                      <div class="row mt-3">
+                        <p>
+                          {{ blogPostForm.get('description').value }}
+                        </p>
+                      </div>
+                      <div class="row d-flex justify-content-between category-time">
+                        <hr style="height: 2px; opacity: 0.3; width: 100%">
+                        <div class="mr-auto post-category" >
+                          <p class="text-left" >
+                            {{ blogPostForm.get('category').value }}
+                            </p>
+                        </div>
+                        <p class="text-right ml-auto" style="padding-top: 4px;">
+                          {{ blogPostForm.get('postTime').value }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-12">
+          <div class="row" style="margin-top: 20px;">
+            <div
+              class="col-lg-4"
+              style="margin-bottom: 20px; border-radius: 8px;">
+              <img
+                src="{{ pictureView }}"
+                style="width: 100%; height: 197px; object-fit: fill;cursor: pointer; border-top-left-radius: 8px; border-top-right-radius: 8px;" >
+              <div class="row mx-0" style="background-color: var(--white); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+                <div class="col-12 mt-2 mx-0 body-post">
+                  <div class="row">
+                    <div class="col-12" style="min-height: 3rem;"  >
+                      <h5 style="cursor: pointer;" class="mobile-title" >{{ blogPostForm.get('title').value }}</h5>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 mobile-description" >
+                      <p class="mobile-description" style="margin-bottom: 0;">{{ blogPostForm.get('description').value }}</p>
+                    </div>
+                  </div>
+                </div>
+                <hr style="height: 2px; opacity: 0.3; width: 100%; padding: 0; margin:0;">
+                <div class="col-12" >
+                  <div class="row d-flex justify-content-between" style=" margin-top:10px" >
+                    <div class="mr-auto post-category" style="margin-left: 12px;" >
+                      <p class="text-left" >
+                        {{ blogPostForm.get('category').value }}
+                      </p>
+                    </div>
+                    <p class="text-right ml-auto" style="padding-top: 4px; margin-right: 18px">
+                      {{ blogPostForm.get('postTime').value }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+           </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>
+
+<app-firebase-proxy></app-firebase-proxy>

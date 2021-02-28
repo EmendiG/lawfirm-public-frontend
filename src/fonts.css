@@ -1,0 +1,90 @@
+@font-face {
+  font-family: 'Bodoni Moda';
+  src: url('/assets/font/bodoni/static/BodoniModa-Regular.ttf') format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/font/popins/Poppins-Regular.ttf')   format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Poppins-Light';
+  src: url('/assets/font/popins/Poppins-Light.ttf')   format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Poppins-Bold';
+  src: url('/assets/font/popins/Poppins-Bold.ttf')   format("truetype");
+  font-display: swap;
+}
+
+h1 {
+  font-family: 'Bodoni Moda';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: 1px;
+  color: #2A2A2A;
+}
+
+
+h2 {
+  font-family: 'Bodoni Moda';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 1px;
+  color: #2A2A2A;
+}
+
+
+h3 {
+  font-family: 'Poppins-Light';
+  font-style: normal;
+  font-weight: 300;
+  color: #2A2A2A;
+}
+
+h5 {
+  font-family: 'Poppins-Bold';
+  font-style: normal;
+  color: #2A2A2A;
+}
+
+p {
+  font-family: 'Poppins-Light';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  color: #565656;
+}
+
+label, .nav-link {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  color: #2A2A2A;
+}
+
+button, .btn {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #2A2A2A;
+}
+
+
+* {
+  font-family: 'Poppins';
+}

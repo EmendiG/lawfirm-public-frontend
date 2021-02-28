@@ -1,0 +1,85 @@
+ .nav-item-active > a  {
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  -webkit-text-decoration-color: var(--gold);
+  text-decoration-thickness: .25em;
+  text-underline-offset: 7.5px;
+}
+
+.sticky-top {
+  /* position: fixed; */
+  /* position: -webkit-sticky; */
+  top:0;
+  z-index: 9999;
+}
+
+a:hover {
+ color: var(--gold);
+}
+
+.nav-item-contact {
+  background-color: var(--green);
+  border-radius: 4px;
+  color: var(--white);
+}
+.nav-item-contact-active > a{
+  font-weight: 600;
+}
+
+.nav-link {
+  height: 40px;
+  display:table-cell;
+  vertical-align:middle;
+}
+
+.p-logo-top {
+  font-family: 'Poppins';
+}
+
+.p-logo-bottom {
+  font-weight: 100;
+  font-family: 'Poppins-Light';
+  margin-top:0;
+  border-top: 3px solid var(--gold);
+}
+
+.v1 {
+  width: 2px;
+  height: 20px;
+  background-color: var(--light-grey);
+  float: left;
+}
+
+@media screen and (max-width:992px){
+  .float-left-mobile {
+    position: absolute;
+  }
+
+  .px-0-mobile {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .logo-label {
+    top: 62px;
+    left: 32px;
+  }
+
+  .nav-item {
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-item-contact {
+    margin-top: 4px;
+  }
+
+  .nav-item-contact {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+}
+
+
+

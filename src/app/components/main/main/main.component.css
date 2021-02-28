@@ -1,0 +1,272 @@
+ngb-carousel {
+  max-width: 700px;
+  margin: 10vh auto 18vh;
+}
+
+ngb-carousel img {
+  width: 100%;
+  outline: none;
+}
+
+ngb-carousel {
+  width: inherit;
+  height: inherit;
+}
+
+.carousel-inner {
+  overflow: visible;
+}
+
+.carousel-item {
+  display: flex !important;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.2s ease-in-out, visibility 1.2s;
+  z-index: -1;
+}
+
+.carousel-item.active{
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+}
+
+.carousel-control-prev {
+   z-index: 20;
+}
+
+.carousel-control-next {
+   z-index: 20;
+}
+
+.carousel-indicators{
+  z-index: 20;
+}
+
+.carousel-ng {
+  background-color: var(--blue);
+  border: 1px solid var(--border-grey);
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-top: 18vh;
+}
+
+::ng-deep .carousel-control-prev-icon {
+  margin-left: -14vw;
+}
+
+::ng-deep .carousel-control-next-icon {
+  margin-right: -14vw;
+}
+
+@media (max-width:992px) {
+  ::ng-deep .carousel-control-prev-icon {
+    margin-left: -7vw;
+  }
+
+  ::ng-deep .carousel-control-next-icon {
+    margin-right: -7vw;
+  }
+}
+
+.img-signature {
+  height: 25px;
+  width: 120px !important;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.opinions-content {
+  align-content: center;
+  text-align: center;
+  margin: 0;
+  height: 20vh;
+}
+
+.cytat {
+  position: relative;
+  left: 1vw;
+  top: 20vh;
+  z-index: 22;
+}
+
+.law-mission {
+  background-color: var(--white);
+  height: 100%;
+}
+
+@media (min-width:1200px) {
+
+  .services-container {
+    height: 100vh;
+  }
+
+  .container-mission {
+    height: 100vh;
+  }
+
+  .carousel-container {
+    height: 35vh;
+    padding: 14px 20px 50px;
+  }
+}
+
+@media (max-width:992px) {
+
+  .list-slider .slider .slide-content,
+  .list-slider .slider .slide-content-wrapper,
+  .list-slider .slider .slide-content.bottom,
+  .list-slider .slider .slide-content.left,
+  .list-slider .slider .slide-content.right {
+      position: relative;
+      top: auto;
+      left: auto;
+      right: auto;
+      bottom: auto;
+
+  }
+
+  .list-slider > .row {
+    height:  calc(100vh - 127px) !important;
+    display: block !important;
+    flex-wrap: inherit !important;
+    max-height: 100vh;
+  }
+
+  .list-slider h1,
+  .list-slider a {
+      color: var(--dark-grey) !important;
+      text-align: center;
+      letter-spacing: 0px;
+  }
+  .list-slider h1 {
+    margin-top: 10vh;
+  }
+  .list-slider hr {
+    width: 50%;
+    margin-left: 25%;
+  }
+  .list-slider h3 {
+    margin-top: 2vh;
+    padding-bottom: 0;
+    text-align: center;
+  }
+
+ .slide-content > div > a {
+    box-sizing: content-box;
+    width: 97%;
+    display: inline-block;
+    font-size: 1.5rem !important;
+    line-height: 2.8rem !important;
+  }
+
+  .lisc-header-lewy {
+    position: absolute;
+    height: 16vh;
+    bottom: 0;
+    left: 0;
+  }
+  .lisc-header-prawy {
+    position: absolute;
+    height: 20vh;
+    top: 0;
+    right: 0px;
+  }
+
+  .law-mission  {
+    margin-top: 12vh;
+    box-shadow: 0 0 6px var(--light-grey);
+    background-color: var(--white);
+    height: auto;
+  }
+  .law-mission > div > div > p {
+    font-size: 0.8rem;
+  }
+
+  .about-div{
+    margin-top: 2vh;
+  }
+
+  .services-container {
+    height: auto;
+  }
+  .service-description {
+    width: 90%;
+  }
+
+  .service-description > p {
+    font-size: 0.8rem;
+  }
+
+  .opinions-div {
+    margin-top: 98px;
+  }
+  .opinions-p {
+    text-align: center;
+  }
+
+
+  .img-signature {
+    max-height: 40px;
+    max-width: 90px;
+  }
+
+  .carousel-container {
+    max-height: 60%;
+    padding: 60px 40px 20px;
+  }
+
+  .carousel-ng {
+    margin-top: 2vh;
+  }
+
+  .cytat {
+    top: 4vh;
+  }
+
+  ngb-carousel {
+    margin: 30px auto;
+  }
+
+  .opinions-heading-div {
+    padding-top: 89.5px;
+  }
+
+  .opinions-content {
+    align-content: center;
+    height: 50vh;
+  }
+
+  .carousel-inner {
+    max-height: 70vh;
+  }
+
+  .why-my-h2 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center ;
+    border-bottom: 3px solid var(--gold) ;
+  }
+}
+
+@media (max-height: 1024px) {
+  .service-pane {
+    height: 18vh;
+  }
+}
+@media (max-height: 800px) {
+  .service-pane {
+    height: 16vh;
+  }
+
+  .service-description {
+    width: 90%;
+  }
+
+  .service-description > p {
+    font-size: 0.7rem;
+  }
+}
+
+

@@ -1,0 +1,45 @@
+<h2 class="pb-3 more-in-mobile">More in category {{postCategoryAfterEnum}}:</h2>
+
+<div class="row">
+  <div
+
+  class="col-lg-4"
+  *ngFor="let post of blogPosts"
+  style="padding-bottom: 20px; border-radius: 8px;">
+
+    <img
+      src="{{post.pictureUrl}}"
+      alt="{{post.title}}"
+      [routerLink]="['/blog', post.id ]"
+      style="width: 100%; height: 150px; object-fit: fill; cursor: pointer; border-top-left-radius: 8px; border-top-right-radius: 8px;" >
+    <div class="row mx-0" style="background-color: var(--white); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+      <div class="col-12 mt-2 mx-0 body-post">
+        <div class="row">
+          <div class="col-12" [routerLink]="['/blog', post.id ]" style="min-height: 3rem;"  >
+            <h5 style="cursor: pointer;" class="mobile-title" >{{post.title}}</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 mobile-description" >
+            <p class="mobile-description" style="margin-bottom: 0;">{{post.description}}</p>
+          </div>
+        </div>
+      </div>
+      <hr style="height: 2px; opacity: 0.3; width: 100%; padding: 0; margin:0;">
+      <div class="col-12" >
+        <div class="row d-flex justify-content-between" style=" margin-top:10px" >
+          <div class="mr-auto post-category" style="margin-left: 12px;" >
+            <p class="text-left" >
+              {{ BlogCategoryEnum[postCategory]  }}
+            </p>
+          </div>
+          <p class="text-right ml-auto" style="padding-top: 4px; margin-right: 18px">
+            {{post.postTime}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

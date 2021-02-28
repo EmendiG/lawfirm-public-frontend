@@ -1,0 +1,155 @@
+<app-blog-navbar> </app-blog-navbar>
+
+<div class="container">
+  <div class="row">
+    <div class=" col-12">
+      <div class="row">
+        <div class="col-lg-12 col-xl-10 offset-xl-1 carousel-immovable-element">
+          <ngb-carousel
+            *ngIf="mostRecentPosts.length > 0"
+            aria-roledescription="carousel"
+            aria-hidden="true"
+            role=slider
+            interval="2500">
+            <ng-template  ngbSlide *ngFor="let post of mostRecentPosts" aria-roledescription="slide" aria-modal="true" >
+              <div class="row"  >
+                <div class="col-md-6 carousel-ng-image" >
+                  <img
+                    src="{{post.pictureUrl}}"
+                    alt="{{post.title}}"
+                    [routerLink]="['/blog', post.id]" >
+                </div>
+                <div class="d-block d-md-none carousel-mobile-title">
+                  <h5
+                    class="carousel-ng-title"
+                    [routerLink]="['/blog', post.id]" >
+                    {{post.title}}
+                  </h5>
+                </div>
+                <div class="d-none d-md-block col-md-6">
+                  <div class="row mt-4 mr-md-4 mr-2 ml-md-1">
+                    <div class="col-12">
+                      <div class="row">
+                        <h5 class="carousel-ng-title" style="cursor: pointer; z-index: 22"   [routerLink]="['/blog', post.id]" >
+                          {{post.title}}
+                        </h5>
+                      </div>
+                      <div class="row mt-3">
+                        <p>
+                          {{post.description}}
+                        </p>
+                      </div>
+                      <div class="row d-flex justify-content-between category-time">
+                        <hr style="height: 2px; opacity: 0.3; width: 100%">
+                        <div class="mr-auto post-category" >
+                          <p class="text-left" >
+                            {{post.category}}
+                            </p>
+                        </div>
+                        <p class="text-right ml-auto" style="padding-top: 4px;">
+                          {{post.postTime}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-carousel>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-12">
+          <div class="row" style="margin-top: 20px;">
+            <div
+              [@grid]=""
+              class="col-lg-4"
+              *ngFor="let post of blogPosts"
+              style="margin-bottom: 20px; border-radius: 8px;">
+              <img
+                src="{{post.pictureUrl}}"
+                alt="{{post.title}}"
+                [routerLink]="['/blog', post.id ]"
+                style="width: 100%; height: 197px; object-fit: fill;cursor: pointer; border-top-left-radius: 8px; border-top-right-radius: 8px;" >
+              <div class="row mx-0" style="background-color: var(--white); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+                <div class="col-12 mt-2 mx-0 body-post">
+                  <div class="row">
+                    <div class="col-12" [routerLink]="['/blog', post.id ]" style="min-height: 3rem;"  >
+                      <h5 style="cursor: pointer;" class="mobile-title" >{{post.title}}</h5>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 mobile-description" >
+                      <p class="mobile-description" style="margin-bottom: 0;">{{post.description}}</p>
+                    </div>
+                  </div>
+                </div>
+                <hr style="height: 2px; opacity: 0.3; width: 100%; padding: 0; margin:0;">
+                <div class="col-12" >
+                  <div class="row d-flex justify-content-between" style=" margin-top:10px" >
+                    <div class="mr-auto post-category" style="margin-left: 12px;" >
+                      <p class="text-left" >
+                        {{post.category}}
+                      </p>
+                    </div>
+                    <p class="text-right ml-auto" style="padding-top: 4px; margin-right: 18px">
+                      {{post.postTime}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+           </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row py-5" >
+        <div class="col-12 d-flex justify-content-center ">
+          <ngb-pagination
+            [(page)]="thePageNumber"
+            [pageSize]="thePageSize"
+            [collectionSize]="theTotalElements"
+            [maxSize]=maxSizePagination
+            [boundaryLinks]="true"
+            (pageChange)="goToPage()">
+            <ng-template ngbPaginationFirst><<</ng-template>
+            <ng-template ngbPaginationPrevious><</ng-template>
+            <ng-template ngbPaginationNext>></ng-template>
+            <ng-template ngbPaginationLast>>></ng-template>
+          </ngb-pagination>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div style="background-color: var(--white)">
+  <div class="container" >
+    <div class="row pt-5 pb-5">
+      <div class="col-lg-10 offset-lg-1 col-xl-12 offset-xl-0">
+        <div class="row" style="height: min-content;">
+          <div class="col-lg-7 pt-4">
+            <p>
+              about blog
+            </p>
+          </div>
+          <div class="d-none d-lg-block col-lg-1"></div>
+          <div class="d-none d-lg-block col-lg-4 " >
+            <div class="col-12 d-flex flex-wrap align-items-center">
+              <img
+              src="assets/images/liscie_blog.png"
+              alt="LISCIE BLOG"
+              class="liscie-blog">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
