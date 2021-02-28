@@ -10,6 +10,7 @@ Secure web application frontend created with an usage of TypeScript Angular Fram
 * Firebase Cloud Function <br/>
   || Google Cloud Run <br/>
   || Google App Engine <br/>
-* Google Maps JavaScript API
-* Connected with Spring Backend through REST API
+* Google Maps JavaScript API <br/>
+* Google Analytics <br/>
+* Connected with Spring Backend through REST API <br/>
 * Lighthouse optimized
